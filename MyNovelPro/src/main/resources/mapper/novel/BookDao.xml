@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.novel.novel.dao.BookDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.novel.novel.entity.BookEntity" id="bookMap">
+        <result property="id" column="id"/>
+        <result property="authorId" column="author_id"/>
+        <result property="authorNickname" column="author_nickname" />
+        <result property="coverImage" column="cover_image"/>
+        <result property="novelTitle" column="novel_title"/>
+        <result property="description" column="description"/>
+        <result property="shelfTime" column="shelf_time"/>
+        <result property="updateTime" column="update_time" />
+        <result property="typeId" column="type_id" />
+        <result property="typeName" column="type_name" />
+    </resultMap>
+
+    <select id="queryByTypeId" resultMap="bookMap">
+        SELECT * FROM novel_book
+        WHERE type_id = #{typeId}
+    </select>
+
+    <select id="queryByAuthorId" resultMap="bookMap">
+        SELECT * FROM novel_book
+        WHERE author_id = #{authorId}
+    </select>
+
+</mapper>

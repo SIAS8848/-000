@@ -1,0 +1,40 @@
+package com.novel.novel.entity;
+
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serializable;
+import java.util.Date;
+import lombok.Data;
+
+/**
+ * 
+ * 
+ * @author 
+ * @email 
+ * @date 2022-02-18 22:47:08
+ */
+@Data
+@TableName("novel_bookshelf")
+public class BookshelfEntity implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 自增id
+	 */
+	@TableId
+	private Long id;
+	/**
+	 * 用户id
+	 */
+	private Long userId;
+	/**
+	 * 书籍id
+	 */
+	private Long bookId;
+	/**
+	 * 更新时间
+	 */
+	private Date updateTime;
+
+}

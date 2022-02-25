@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.novel.novel.dao.BookshelfDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.novel.novel.entity.BookshelfEntity" id="bookshelfMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="bookId" column="book_id"/>
+    </resultMap>
+
+    <resultMap type="com.novel.novel.vo.BookshelfVO" id="bookshelfVOMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="bookId" column="book_id"/>
+        <association property="book" javaType="com.novel.novel.entity.BookEntity">
+            <id property="id" column="id" />
+            <result property="authorId" column="author_id" />
+            <result property="authorNickname" column="author_nickname" />
+            <result property="coverImage" column="cover_image" />
+            <result property="novelTitle" column="novel_title" />
+            <result property="description" column="description" />
+            <result property="shelfTime" column="shelf_time" />
+            <result property="updateTime" column="update_time" />
+            <result property="typeId" column="type_id" />
+            <result property="typeName" column="type_name" />
+        </association>
+    </resultMap>
+
+    <select id="queryByUserId" resultMap="bookshelfVOMap">
+        SELECT *
+        FROM novel_bookshelf bs, novel_book b
+        WHERE bs.user_id = #{userId} AND bs.book_id = b.id
+        ORDER BY b.update_time DESC
+    </select>
+
+</mapper>

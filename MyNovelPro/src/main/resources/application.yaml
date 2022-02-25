@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    username: root
+    password: chenjj666
+    url: jdbc:mysql://localhost:3306/novel?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: novel
+
+mybatis-plus:
+  # 配置mapper路径
+  mapper-locations: classpath*:/mapper/**/*.xml
+  global-config:
+    db-config:
+      # 主键自增
+      id-type: auto
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  level:
+    com.novel.novel: debug
